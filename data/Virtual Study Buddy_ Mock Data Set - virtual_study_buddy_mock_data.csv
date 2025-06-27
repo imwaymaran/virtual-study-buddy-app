@@ -1,0 +1,156 @@
+student_name,student_id,preferred_subjects,study_times,personality_type,study_style,timezone,days_of_wk_avail,experience_level,GPA
+Tiffany Brown,stu1000,UI/UX Design,Afternoons,ESTP,Pair,UTC-5,"Wed, Thu, Sat, Sun, Mon",Beginner,3.09
+David Beard,stu1001,"SQL for Data Analysis, Python for Data Analysis, Software Testing & QA",Evenings,INFP,Flexible,UTC+8,"Mon, Wed, Thu, Fri, Sat",Beginner,3.73
+Garrett Powell,stu1002,Cloud Computing,Mornings,ENFP,Pair,UTC+1,"Sat, Sun, Wed",Intermediate,3.41
+Kenneth Martinez,stu1003,"Statistics for Data Science, Machine Learning",Mornings,INFP,Pair,UTC-4,"Fri, Thu, Wed",Beginner,2.64
+William Soto,stu1004,"Machine Learning, DevOps & CI/CD",Afternoons,ESTP,Pair,UTC+8,"Sat, Wed, Mon",Advanced,3
+Isabella Bailey,stu1005,"Statistics for Data Science, Agile & Scrum Methodology, SQL for Data Analysis",Late Nights,INFJ,Pair,UTC+1,"Tue, Mon, Thu, Fri, Sun",Beginner,3.71
+Alyssa Phillips,stu1006,Deep Learning,Afternoons,ENFP,Pair,UTC+0,"Sun, Mon, Tue, Thu, Fri",Beginner,3.32
+Shelby Wright,stu1007,"Software Testing & QA, Cloud Computing, Deep Learning",Late Nights,ENFP,Group,UTC+1,"Wed, Mon, Sun, Thu, Fri",Beginner,3.09
+Jeffrey Jarvis,stu1008,"SQL for Data Analysis, Git & Version Control",Late Nights,INFP,Pair,UTC+1,"Sat, Wed",Advanced,3.39
+Karen Campbell,stu1009,Full Stack Web Development,Evenings,INTJ,Flexible,UTC+5,"Tue, Mon, Thu",Advanced,2.62
+Steven Ryan,stu1010,"Database Design & Management, Natural Language Processing",Late Nights,INFP,Flexible,UTC+1,"Sun, Wed",Intermediate,2.88
+Kevin Rice,stu1011,"DevOps & CI/CD, Natural Language Processing",Late Nights,INFJ,Group,UTC-8,"Sat, Wed",Intermediate,3.38
+Charles Bass,stu1012,"Agile & Scrum Methodology, Backend, Mobile App Development",Mornings,INFP,Pair,UTC+2,"Mon, Fri, Thu, Sat, Tue",Intermediate,3.57
+Mark Lee,stu1013,"Frontend, Deep Learning, Agile & Scrum Methodology",Afternoons,INFJ,Pair,UTC+2,"Wed, Mon",Intermediate,3.65
+Gregory Hart,stu1014,"Natural Language Processing, API Development, DevOps & CI/CD",Late Nights,INTJ,Pair,UTC-4,"Mon, Fri, Sat",Beginner,2.68
+Nicholas Davenport,stu1015,"Technical Interview Prep, Algorithms & Data Structures",Mornings,ENFP,Pair,UTC-8,"Sat, Sun, Wed",Intermediate,2.51
+Kim Davis,stu1016,Full Stack Web Development,Evenings,ESFJ,Group,UTC+5,"Mon, Sat, Sun, Tue",Beginner,3.22
+Brad Howard,stu1017,"Mobile App Development, Data Visualization, Python for Data Analysis",Afternoons,ESFJ,Pair,UTC+8,"Sat, Wed, Fri, Mon, Tue",Advanced,2.94
+Rebekah Campbell,stu1018,Machine Learning,Evenings,ISTJ,Pair,UTC-4,"Mon, Sun, Fri, Sat, Tue",Advanced,2.94
+Cheryl Williams,stu1019,"API Development, Python for Data Analysis",Late Nights,ENTP,Flexible,UTC-8,"Mon, Tue, Sun, Thu, Fri",Advanced,3.22
+Meagan Jones,stu1020,"Git & Version Control, Statistics for Data Science",Afternoons,INFJ,Pair,UTC-6,"Thu, Wed, Tue, Sun",Intermediate,3.35
+Lindsay Morris,stu1021,Database Design & Management,Afternoons,ISTJ,Group,UTC-7,"Sun, Tue, Mon, Thu, Wed",Advanced,3.29
+Terri Long,stu1022,"Machine Learning, Agile & Scrum Methodology",Late Nights,ESFJ,Pair,UTC+2,"Sat, Wed, Tue",Beginner,3.48
+Jeffrey Edwards,stu1023,Natural Language Processing,Late Nights,ISTJ,Pair,UTC+0,"Mon, Sat, Fri, Wed",Advanced,3.45
+Sue Ryan,stu1024,"Python for Data Analysis, DevOps & CI/CD",Afternoons,ENTP,Group,UTC-7,"Wed, Thu",Beginner,3.2
+Angela Smith,stu1025,Mobile App Development,Mornings,INTJ,Flexible,UTC+2,"Mon, Wed, Thu, Tue, Sun",Beginner,2.79
+Kayla Edwards,stu1026,"Mobile App Development, UI/UX Design",Evenings,INFJ,Flexible,UTC+1,"Fri, Sat, Thu, Mon",Beginner,3.73
+Victor Harrell,stu1027,"Software Testing & QA, Python for Data Analysis",Evenings,INTJ,Group,UTC-5,"Fri, Sun",Beginner,2.56
+Jordan Taylor,stu1028,"UI/UX Design, Mobile App Development",Mornings,INFP,Pair,UTC+1,"Thu, Fri, Tue",Advanced,2.76
+Adam Sparks,stu1029,"Big Data Tools, Technical Interview Prep, Full Stack Web Development",Mornings,INFP,Group,UTC-4,"Tue, Sat",Intermediate,3.4
+Cassandra Torres,stu1030,"Software Testing & QA, Cloud Computing",Mornings,ISTJ,Pair,UTC+5,"Wed, Sun",Advanced,3.41
+Nichole Johnson,stu1031,Machine Learning,Mornings,INFP,Pair,UTC-4,"Fri, Wed, Tue, Mon",Beginner,3.78
+Candice Miller,stu1032,"Big Data Tools, Cybersecurity Basics, Full Stack Web Development",Mornings,ESFJ,Pair,UTC-7,"Wed, Fri",Advanced,2.91
+Kristie Love,stu1033,"Mobile App Development, Backend, API Development",Late Nights,ENTP,Flexible,UTC+1,"Wed, Fri",Intermediate,3.93
+Ashley Hernandez,stu1034,"Statistics for Data Science, SQL for Data Analysis, UI/UX Design",Late Nights,ESTP,Flexible,UTC-7,"Tue, Sun",Advanced,2.8
+Gregory Obrien,stu1035,Statistics for Data Science,Mornings,ENTP,Pair,UTC+5,"Thu, Fri",Intermediate,3.14
+Lauren Larson,stu1036,Frontend,Late Nights,ESTP,Pair,UTC+2,"Tue, Sat, Thu",Advanced,2.65
+Cristian Bautista,stu1037,"Natural Language Processing, Machine Learning",Mornings,ESFJ,Pair,UTC+5,"Thu, Fri, Tue, Sun, Sat",Advanced,3.22
+Matthew Kidd,stu1038,Database Design & Management,Evenings,INTJ,Pair,UTC+1,"Tue, Fri, Sat",Advanced,3.02
+Heather Flores,stu1039,Python for Data Analysis,Evenings,ENTP,Pair,UTC-7,"Thu, Fri, Sat, Sun",Beginner,2.78
+Frank Peterson,stu1040,DevOps & CI/CD,Mornings,ISTJ,Pair,UTC+1,"Tue, Sun",Advanced,3.65
+Cheryl Young,stu1041,"Technical Interview Prep, Cybersecurity Basics, Mobile App Development",Late Nights,ENFP,Group,UTC-8,"Sun, Tue, Thu, Fri, Mon",Beginner,3.77
+Dominique Walker,stu1042,"Full Stack Web Development, Cloud Computing",Evenings,ESTP,Pair,UTC-4,"Fri, Sun",Beginner,3.62
+Kelsey Richards,stu1043,Statistics for Data Science,Mornings,INTJ,Flexible,UTC+2,"Tue, Mon, Wed, Thu, Sun",Beginner,3.92
+Elizabeth Chang,stu1044,Software Testing & QA,Afternoons,ESFJ,Flexible,UTC+1,"Sun, Thu, Wed, Tue, Sat",Beginner,3.75
+John Harris,stu1045,Cybersecurity Basics,Afternoons,ENTP,Group,UTC-5,"Wed, Mon, Sun",Beginner,3.61
+Randall Smith,stu1046,"Cloud Computing, Big Data Tools, Full Stack Web Development",Afternoons,INFJ,Pair,UTC+1,"Tue, Sun, Sat, Fri, Wed",Advanced,3.33
+Carl Harmon II,stu1047,"Agile & Scrum Methodology, Software Testing & QA",Mornings,INFP,Pair,UTC+1,"Mon, Thu, Sun, Sat, Wed",Beginner,2.74
+Brenda Carlson,stu1048,"SQL for Data Analysis, DevOps & CI/CD, Deep Learning",Late Nights,INFJ,Pair,UTC-7,"Sat, Thu, Tue",Advanced,2.89
+Jonathan Anderson,stu1049,"Cybersecurity Basics, UI/UX Design",Afternoons,ESFJ,Pair,UTC+8,"Tue, Fri, Mon, Thu, Sat",Advanced,3.27
+Kevin Kelley,stu1050,SQL for Data Analysis,Evenings,ESFJ,Pair,UTC+0,"Mon, Sat, Tue",Advanced,2.57
+Samantha Martin,stu1051,"Cybersecurity Basics, Git & Version Control, UI/UX Design",Mornings,ISTJ,Pair,UTC-6,"Mon, Tue, Thu, Sun",Advanced,2.99
+Timothy Reynolds,stu1052,Statistics for Data Science,Evenings,ESTP,Pair,UTC-8,"Sat, Tue",Intermediate,2.71
+Kelly Brown,stu1053,"Cloud Computing, Backend",Evenings,ENTP,Flexible,UTC-4,"Wed, Fri, Tue",Intermediate,3.44
+Brett Henry,stu1054,"Blockchain Fundamentals, Full Stack Web Development",Afternoons,ESFJ,Pair,UTC-8,"Tue, Sat, Thu, Mon, Sun",Intermediate,3.42
+James Thompson,stu1055,"Machine Learning, Deep Learning",Afternoons,INTJ,Group,UTC-6,"Tue, Fri",Advanced,3.73
+Jocelyn Hayes,stu1056,"Cloud Computing, Cybersecurity Basics, Natural Language Processing",Mornings,INFJ,Pair,UTC+8,"Wed, Fri, Mon",Intermediate,2.61
+Melissa Stafford,stu1057,"Software Testing & QA, Natural Language Processing",Evenings,ENFP,Flexible,UTC+5,"Tue, Sat, Mon, Fri",Intermediate,3.15
+Michael Flynn,stu1058,"Big Data Tools, Cybersecurity Basics",Evenings,INFP,Pair,UTC-4,"Mon, Wed, Sat, Tue",Beginner,3.49
+Jim Jackson,stu1059,Natural Language Processing,Mornings,ENTP,Pair,UTC+0,"Thu, Sun",Beginner,3.55
+Hannah Kerr,stu1060,"Statistics for Data Science, Mobile App Development, Machine Learning",Afternoons,ISTJ,Pair,UTC-8,"Sun, Fri, Tue",Beginner,2.51
+Stephanie Alvarez,stu1061,"Algorithms & Data Structures, Git & Version Control",Evenings,INFP,Pair,UTC-6,"Thu, Fri, Wed, Sat",Advanced,2.59
+Susan Jefferson,stu1062,"Technical Interview Prep, Data Visualization, Backend",Mornings,ENFP,Pair,UTC-5,"Thu, Mon, Sat",Intermediate,3.63
+Mr. Raymond Weaver,stu1063,Full Stack Web Development,Evenings,ENTP,Flexible,UTC+2,"Tue, Thu, Fri, Mon",Beginner,3.15
+Felicia Ward,stu1064,"Git & Version Control, UI/UX Design",Afternoons,ENTP,Flexible,UTC+5,"Tue, Sun, Wed, Fri, Sat",Intermediate,3.36
+Monica Hunter,stu1065,"Agile & Scrum Methodology, Cloud Computing",Afternoons,INFJ,Pair,UTC+0,"Sun, Mon, Sat, Wed",Beginner,3.5
+Patrick Potter,stu1066,"Agile & Scrum Methodology, SQL for Data Analysis, Big Data Tools",Late Nights,ENTP,Flexible,UTC-7,"Thu, Wed, Mon",Advanced,3.07
+Lindsey Gomez,stu1067,"API Development, Cybersecurity Basics",Mornings,ESTP,Flexible,UTC-4,"Thu, Sun",Beginner,2.72
+Angela Walsh,stu1068,Data Visualization,Late Nights,ENTP,Pair,UTC+1,"Fri, Sun, Tue, Wed",Advanced,2.95
+Angela Harvey,stu1069,"Python for Data Analysis, Data Visualization",Evenings,ISTJ,Flexible,UTC-5,"Wed, Tue, Thu",Advanced,2.82
+Joshua Fletcher,stu1070,"Blockchain Fundamentals, Cloud Computing",Afternoons,ISTJ,Flexible,UTC-4,"Tue, Sun, Fri",Advanced,3.97
+Phillip Perez,stu1071,"Natural Language Processing, Backend, SQL for Data Analysis",Evenings,INTJ,Pair,UTC-4,"Tue, Sun, Mon",Beginner,2.82
+Tiffany Shepherd,stu1072,"Mobile App Development, Natural Language Processing, Python for Data Analysis",Late Nights,INFP,Pair,UTC+2,"Sat, Tue, Fri, Thu",Intermediate,3.13
+Lawrence Roberts,stu1073,Blockchain Fundamentals,Late Nights,INFJ,Group,UTC+0,"Thu, Sun, Tue, Mon",Advanced,3.27
+Jack Eaton,stu1074,"Backend, Cloud Computing",Evenings,ENTP,Flexible,UTC+0,"Sat, Fri, Mon",Beginner,3.27
+Amanda Ramos,stu1075,"Full Stack Web Development, Backend",Late Nights,ENTP,Flexible,UTC-8,"Fri, Tue, Thu",Advanced,3.42
+Patrick Ali,stu1076,"SQL for Data Analysis, Deep Learning",Afternoons,ENTP,Flexible,UTC-7,"Sun, Mon",Advanced,3.24
+Gloria White,stu1077,"Frontend, DevOps & CI/CD",Late Nights,INFJ,Pair,UTC-7,"Mon, Thu",Advanced,2.98
+Kellie Brown,stu1078,"Agile & Scrum Methodology, DevOps & CI/CD",Afternoons,INTJ,Pair,UTC-6,"Tue, Mon, Sun, Sat",Advanced,3.39
+Maureen Murphy,stu1079,Deep Learning,Afternoons,ISTJ,Pair,UTC+0,"Sun, Wed",Intermediate,3.17
+Patricia Kerr,stu1080,"Machine Learning, Deep Learning, Frontend",Mornings,ESFJ,Pair,UTC-7,"Sat, Wed, Sun, Mon, Tue",Advanced,3.45
+Bryan Stevens,stu1081,Git & Version Control,Mornings,ESFJ,Group,UTC+5,"Wed, Tue",Intermediate,3.09
+Janice Knight,stu1082,"UI/UX Design, Mobile App Development, API Development",Mornings,INFJ,Pair,UTC+0,"Wed, Mon, Sun, Thu",Intermediate,3.05
+Dwayne Miller,stu1083,"Statistics for Data Science, Algorithms & Data Structures",Mornings,INFP,Pair,UTC+0,"Mon, Thu, Sat, Tue",Intermediate,3.71
+Kathy Perkins,stu1084,API Development,Afternoons,ENFP,Pair,UTC-4,"Fri, Thu, Mon, Wed, Sat",Beginner,2.68
+Donald Ford,stu1085,Statistics for Data Science,Afternoons,ENFP,Pair,UTC+2,"Sun, Thu, Sat, Mon, Fri",Advanced,2.78
+Michael Day,stu1086,"Algorithms & Data Structures, Technical Interview Prep",Evenings,ENFP,Pair,UTC-5,"Mon, Sun, Thu, Tue, Wed",Advanced,3.64
+Tiffany Clark,stu1087,"Blockchain Fundamentals, Algorithms & Data Structures, Cybersecurity Basics",Mornings,ISTJ,Pair,UTC-8,"Mon, Sat, Fri",Intermediate,2.67
+Teresa Perez,stu1088,UI/UX Design,Mornings,ENTP,Flexible,UTC+8,"Sat, Tue, Sun",Beginner,3.07
+Phillip Wilson,stu1089,"Cloud Computing, Machine Learning, Backend",Late Nights,INFP,Group,UTC+2,"Thu, Mon, Tue, Sat",Intermediate,2.79
+Perry Wright,stu1090,"DevOps & CI/CD, API Development",Mornings,ESTP,Pair,UTC+5,"Tue, Thu, Sat, Sun, Mon",Intermediate,2.82
+Katrina Huffman,stu1091,"Python for Data Analysis, SQL for Data Analysis",Late Nights,ISTJ,Group,UTC+1,"Wed, Mon, Fri",Beginner,2.55
+Michael Cook,stu1092,"Software Testing & QA, Natural Language Processing, Deep Learning",Evenings,INFJ,Group,UTC-4,"Wed, Sat, Thu, Mon",Beginner,3.7
+Jonathan Montgomery,stu1093,"Blockchain Fundamentals, DevOps & CI/CD, Backend",Mornings,ESTP,Group,UTC-4,"Thu, Wed, Mon",Intermediate,2.93
+Jo Nguyen,stu1094,"Python for Data Analysis, Git & Version Control",Mornings,ENFP,Flexible,UTC+8,"Tue, Wed",Advanced,3.41
+Jesse Soto,stu1095,Agile & Scrum Methodology,Evenings,ESTP,Flexible,UTC-4,"Fri, Tue",Beginner,2.58
+Emily Lee,stu1096,Machine Learning,Evenings,ENTP,Pair,UTC+2,"Thu, Sun, Tue",Intermediate,2.86
+Michelle Kline,stu1097,"Data Visualization, Python for Data Analysis, Cloud Computing",Afternoons,INFP,Flexible,UTC-6,"Fri, Tue",Intermediate,3.39
+Brian Lee,stu1098,"Deep Learning, Git & Version Control, DevOps & CI/CD",Mornings,INFP,Pair,UTC-8,"Sat, Tue, Sun, Thu",Advanced,3.1
+Terry French,stu1099,Big Data Tools,Mornings,ESFJ,Pair,UTC-5,"Tue, Mon, Wed, Sun",Intermediate,3.09
+Andrew Carpenter,stu1100,"UI/UX Design, Git & Version Control",Mornings,INFJ,Pair,UTC+5,"Tue, Sun, Wed, Thu",Intermediate,2.57
+Christina Garcia,stu1101,Frontend,Late Nights,INFJ,Pair,UTC-4,"Sat, Wed, Tue, Fri",Intermediate,2.92
+Micheal Robles,stu1102,"Cybersecurity Basics, Backend",Evenings,INFP,Pair,UTC-8,"Sat, Tue, Fri, Wed",Beginner,3.95
+Joshua Mann,stu1103,Full Stack Web Development,Late Nights,ENFP,Pair,UTC+0,"Tue, Sun",Intermediate,3.76
+Charlotte Case,stu1104,Git & Version Control,Evenings,ENTP,Pair,UTC-8,"Thu, Tue, Mon, Sun, Fri",Beginner,2.55
+Mrs. Natasha Goodwin,stu1105,"DevOps & CI/CD, Backend, Agile & Scrum Methodology",Evenings,ENFP,Flexible,UTC+2,"Thu, Mon, Sun, Sat",Beginner,3.62
+Diana Edwards,stu1106,Database Design & Management,Evenings,INFP,Group,UTC-6,"Thu, Wed",Beginner,2.52
+Sandra Hicks,stu1107,"Technical Interview Prep, Blockchain Fundamentals, Statistics for Data Science",Evenings,ENTP,Pair,UTC-4,"Wed, Thu",Beginner,3.53
+Ryan Clark,stu1108,"Mobile App Development, Database Design & Management",Mornings,ESTP,Pair,UTC-4,"Sat, Fri, Thu, Tue",Advanced,3.43
+Eddie Page,stu1109,"SQL for Data Analysis, API Development, Natural Language Processing",Afternoons,ESFJ,Pair,UTC+1,"Sat, Fri",Advanced,2.72
+William Oneal,stu1110,Cybersecurity Basics,Late Nights,ENFP,Pair,UTC+0,"Fri, Sun, Mon, Thu",Advanced,3.45
+James Jefferson,stu1111,SQL for Data Analysis,Late Nights,INTJ,Flexible,UTC-7,"Mon, Tue, Fri, Wed, Sat",Intermediate,2.91
+Angela Hart,stu1112,"Software Testing & QA, Blockchain Fundamentals, UI/UX Design",Evenings,INFJ,Flexible,UTC+0,"Tue, Sat, Sun, Thu",Intermediate,3.71
+Nicholas Henderson,stu1113,"Technical Interview Prep, Frontend",Evenings,INFP,Flexible,UTC+0,"Wed, Thu, Fri",Intermediate,3.61
+Kendra Davis,stu1114,"Natural Language Processing, Cloud Computing, Cybersecurity Basics",Late Nights,INFJ,Group,UTC+8,"Sun, Fri, Wed, Tue",Advanced,3.87
+Sara Hudson,stu1115,"Statistics for Data Science, Backend",Evenings,ESTP,Pair,UTC+8,"Mon, Thu, Sun, Fri",Intermediate,3.83
+Sonya Evans,stu1116,"Deep Learning, UI/UX Design, Data Visualization",Late Nights,ESTP,Pair,UTC-4,"Wed, Fri, Tue",Advanced,2.62
+Pamela Flynn,stu1117,Agile & Scrum Methodology,Evenings,INFJ,Flexible,UTC-4,"Mon, Sat, Sun, Tue, Fri",Intermediate,3.53
+Mrs. Robin Thompson DDS,stu1118,"Data Visualization, Mobile App Development, Backend",Late Nights,ESTP,Group,UTC+0,"Sun, Thu, Wed, Tue, Fri",Beginner,2.71
+Dr. Robert Kelly,stu1119,"Data Visualization, Python for Data Analysis, Frontend",Late Nights,ENFP,Pair,UTC+8,"Tue, Fri, Mon, Sun, Thu",Beginner,3.68
+Christopher Allison,stu1120,"DevOps & CI/CD, Backend",Mornings,INTJ,Group,UTC+1,"Sun, Mon, Tue",Advanced,2.62
+Nicholas Martinez,stu1121,"Mobile App Development, Python for Data Analysis, DevOps & CI/CD",Afternoons,ESTP,Group,UTC-6,"Wed, Thu",Advanced,3.17
+Crystal Arnold,stu1122,"API Development, Backend",Evenings,ISTJ,Pair,UTC+1,"Sat, Fri, Mon",Intermediate,3.11
+Mark Welch,stu1123,"Full Stack Web Development, Technical Interview Prep, Database Design & Management",Evenings,INFJ,Pair,UTC+5,"Tue, Thu",Advanced,3.66
+Melissa Kirk,stu1124,"Python for Data Analysis, Deep Learning",Afternoons,ESTP,Flexible,UTC+1,"Sun, Mon",Advanced,3.52
+Monica Gonzales,stu1125,"Blockchain Fundamentals, Algorithms & Data Structures",Late Nights,ENTP,Flexible,UTC-5,"Sun, Thu, Wed",Intermediate,3.6
+Susan Washington,stu1126,"Backend, Cybersecurity Basics, Data Visualization",Evenings,ESTP,Group,UTC+5,"Fri, Wed",Intermediate,2.86
+Lisa Cochran,stu1127,Python for Data Analysis,Afternoons,INFJ,Group,UTC-4,"Tue, Sun, Wed, Mon, Fri",Intermediate,2.65
+Elizabeth Smith,stu1128,Full Stack Web Development,Afternoons,ISTJ,Pair,UTC+2,"Wed, Tue, Sat, Mon",Intermediate,3.37
+Amanda Jimenez,stu1129,"Frontend, Algorithms & Data Structures, Data Visualization",Afternoons,ESFJ,Flexible,UTC-8,"Wed, Thu, Sat, Tue",Beginner,3.17
+April Smith,stu1130,Software Testing & QA,Late Nights,INFJ,Flexible,UTC-6,"Mon, Wed, Sun, Thu, Sat",Beginner,3.52
+Elizabeth Allen,stu1131,SQL for Data Analysis,Evenings,ISTJ,Group,UTC-4,"Sun, Mon",Beginner,3.34
+Andrew Wilson,stu1132,"Technical Interview Prep, Full Stack Web Development, Frontend",Afternoons,ENFP,Group,UTC-5,"Sat, Tue, Mon",Beginner,3.98
+Angel Patterson,stu1133,UI/UX Design,Mornings,ESTP,Flexible,UTC+2,"Fri, Mon",Beginner,2.57
+Kenneth Mcknight,stu1134,Database Design & Management,Late Nights,ENTP,Pair,UTC+0,"Mon, Tue",Intermediate,2.62
+Gregory Johnson,stu1135,Software Testing & QA,Afternoons,INFP,Group,UTC+2,"Sat, Fri, Tue, Thu, Sun",Intermediate,3.73
+David Carr,stu1136,"Machine Learning, Cybersecurity Basics",Mornings,INFJ,Group,UTC-8,"Wed, Sun",Intermediate,2.95
+Donna Sullivan,stu1137,"Blockchain Fundamentals, Git & Version Control, DevOps & CI/CD",Afternoons,ISTJ,Pair,UTC+1,"Fri, Mon",Advanced,3.44
+Michelle Carlson,stu1138,"Deep Learning, Python for Data Analysis",Mornings,ENFP,Group,UTC-7,"Sun, Tue, Thu, Fri, Wed",Intermediate,3.89
+Tara Gomez,stu1139,"Mobile App Development, Cybersecurity Basics, Software Testing & QA",Evenings,ENFP,Flexible,UTC+5,"Wed, Sat, Fri, Thu, Sun",Advanced,3.04
+Ryan Cole,stu1140,Technical Interview Prep,Evenings,INTJ,Group,UTC-4,"Sat, Sun, Mon",Beginner,3.17
+Katie Nelson,stu1141,UI/UX Design,Late Nights,INFJ,Pair,UTC+1,"Fri, Sat, Wed",Beginner,2.52
+Nicole Phillips,stu1142,"Data Visualization, UI/UX Design, Cloud Computing",Mornings,ESFJ,Pair,UTC-5,"Thu, Wed, Fri, Tue, Mon",Intermediate,3.27
+Charles Mendez,stu1143,"Frontend, UI/UX Design, SQL for Data Analysis",Late Nights,INFP,Pair,UTC+5,"Thu, Wed, Mon, Fri",Beginner,3.05
+Kelly Hall,stu1144,"Deep Learning, Python for Data Analysis",Afternoons,INFJ,Flexible,UTC+5,"Thu, Tue, Sat",Advanced,3.28
+Melissa Durham,stu1145,API Development,Afternoons,INTJ,Flexible,UTC-4,"Sun, Mon, Tue, Sat",Advanced,3.16
+Molly Greene,stu1146,Mobile App Development,Mornings,ENFP,Pair,UTC+0,"Tue, Sat, Thu",Beginner,2.57
+Bonnie Jenkins,stu1147,Deep Learning,Afternoons,ENFP,Pair,UTC+2,"Wed, Sat",Intermediate,3.87
+Brian King,stu1148,"Frontend, Agile & Scrum Methodology, Cybersecurity Basics",Late Nights,ENFP,Group,UTC-6,"Mon, Fri, Sun, Thu",Advanced,2.55
+Dustin Smith,stu1149,Blockchain Fundamentals,Evenings,ISTJ,Flexible,UTC+8,"Wed, Sat",Advanced,3.48
+Douglas Miller,stu1150,"Database Design & Management, Algorithms & Data Structures, Frontend",Afternoons,INFJ,Pair,UTC-7,"Tue, Mon, Sun, Thu",Intermediate,2.83
+Erica Callahan,stu1151,"Mobile App Development, UI/UX Design, DevOps & CI/CD",Evenings,ESFJ,Pair,UTC-6,"Sun, Mon, Thu, Wed, Sat",Advanced,3.53
+Kyle Turner,stu1152,"Frontend, DevOps & CI/CD",Late Nights,INTJ,Pair,UTC+8,"Sun, Thu",Intermediate,2.95
+Justin Clark,stu1153,"Mobile App Development, Machine Learning",Late Nights,ENFP,Flexible,UTC+5,"Sat, Sun, Thu, Wed",Advanced,3.8
+Tiffany Turner,stu1154,Backend,Evenings,ISTJ,Flexible,UTC+0,"Fri, Thu, Sat, Wed, Tue",Beginner,2.88
