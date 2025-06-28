@@ -1,120 +1,138 @@
-# virtual-study-buddy-app
+# Virtual Study Buddy App
 
-# Project Overview
-The Virtual Study Buddy App is a matching tool designed to connect students based on their study habits, availability, and learning goals. By organizing student profiles and preferences in a structured dataset, we can simulate  matching using Python and SQL. 
+## Project Overview
 
-# Database Schema Overview
+The Virtual Study Buddy App is a matching tool designed to connect students based on study habits, availability, and learning goals. It organizes student profiles and preferences in a structured database, enabling simulation of intelligent pairing using Python and SQL.
+
+---
+
+## Database Schema Overview
+
 The raw data was generated via Mockaroo and saved as virtual_study_buddy_mock_data.csv. The data fields are as follows: student_id, student_name, preferred_subjects, study_times, study_style, personality_type, timezone, experience_level, GPA.
 
 This database supports the core functionality of the Virtual Study Buddy App. It organizes student profiles, subjects of interest, and weekly availability to enable effective matching based on study preferences and schedules. The tables for messaging and notifications allow for organizing the data structure for real-time communication and personalized nudges. The structure is built to keep things organized and support additional features as the app grows.
 
-## General Overview
-| Table Name    | Description                                                |
-|---------------|------------------------------------------------------------|
-| Students      | Stores individual student profiles                         |
-| Subjects      | Tracks each student to the subjects they are studying      |
-| Availability  | Tracks each student’s weekly availability                  |
-| Messages      | Stores chat messages exchanged between students            |
-| Notifications | Stores alerts like daily check-ins or chat reminders       |
+### Tables
 
+| Table Name         | Description                                                                 |
+|--------------------|-----------------------------------------------------------------------------|
+| `students`         | Stores individual student profiles including UTC-adjusted study hours      |
+| `subjects`         | Unique list of all study subjects                                          |
+| `student_subjects` | Many-to-many mapping between students and their preferred subjects         |
+| `study_days`       | Stores students’ availability by local weekdays                            |
+| `utc_study_days`   | Stores availability adjusted to UTC weekdays for easier time zone matching  |
+| `messages`         | (Optional) Stores chat messages between students                           |
+| `notifications`    | (Optional) Stores reminders and alerts                                     |
 
-### Students
+---
+
+### `students`
+
 | Column           | Type  | Description                                  |
 |------------------|-------|----------------------------------------------|
-| student_id       | TEXT  | Primary key, uniquely identifies a student   |
-| student_name     | TEXT  | Full name of the student                     |
+| student_id       | TEXT  | Unique student identifier (Primary Key)      |
+| student_name     | TEXT  | Full name                                    |
 | personality_type | TEXT  | MBTI type                                    |
-| study_style      | TEXT  | Pair/Group/Flexible (Group Formation)        |
-| timezone         | TEXT  | Student’s time zone (EST, PST)               |
-| experience_level | TEXT  | Beginner, Intermediate, Advanced             |
-| GPA              | REAL  | Grade Point Average (can be decimal)         |
+| study_style      | TEXT  | Pair / Group / Flexible                      |
+| timezone         | INT   | UTC offset in hours                          |
+| experience_level | TEXT  | Beginner / Intermediate / Advanced           |
+| GPA              | REAL  | Grade Point Average                          |
+| utc_start_time   | TEXT  | Study start time in UTC                      |
+| utc_end_time     | TEXT  | Study end time in UTC                        |
 
+### `subjects`
 
-### Subjects 
-| Column            | Type | Description                                  |
-|-------------------|------|----------------------------------------------|
-| student_id        | TEXT | Foreign key referencing students table       |
-| preferred_subject | TEXT | Subject associated with the student          |
+| Column        | Type | Description                   |
+|---------------|------|-------------------------------|
+| subject_id    | INT  | Primary Key                   |
+| subject_name  | TEXT | Unique subject name           |
 
+### `student_subjects`
 
-### Availability
-| Column        | Type | Description                                  |
-|---------------|------|----------------------------------------------|
-| student_id    | TEXT | Foreign key referencing students table       |
-| days_of_week  | TEXT | Week day the student is available            |
+| Column       | Type | Description                         |
+|--------------|------|-------------------------------------|
+| student_id   | TEXT | Foreign key to `students` table     |
+| subject_id   | INT  | Foreign key to `subjects` table     |
 
+### `study_days`
 
-### Chat
-| Column      | Type     | Description                                  |
-|-------------|----------|----------------------------------------------|
-| message_id  | TEXT     | Primary key                                  |
-| sender_id   | TEXT     | Foreign key referencing students table       |
-| receiver_id | TEXT     | Foreign key referencing students table       |
-| content     | TEXT     | Message content                              |
-| timestamp   | DATETIME | When the message was sent                    |
+| Column       | Type | Description                         |
+|--------------|------|-------------------------------------|
+| student_id   | TEXT | Foreign key to `students` table     |
+| day          | TEXT | Local weekday abbreviation (e.g., Mon) |
 
+### `utc_study_days`
 
-### Notifications
-| Column           | Type     | Description                                  |
-|------------------|----------|----------------------------------------------|
-| notification_id  | TEXT     | Primary key                                  |
-| student_id       | TEXT     | Foreign key referencing students table       |
-| type             | TEXT     | e.g., daily_checkin, chat_reminder           |
-| content          | TEXT     | Message or reminder content                  |
-| status           | TEXT     | sent, read, or dismissed                     |
-| timestamp        | DATETIME | When the notification was created            |
+| Column       | Type | Description                         |
+|--------------|------|-------------------------------------|
+| student_id   | TEXT | Foreign key to `students` table     |
+| utc_day      | TEXT | UTC weekday abbreviation            |
 
+---
 
-# Tools/ Libraries 
+## Tools & Libraries
+
+- Python
 - SQLite
-- Pandas
+- pandas
+- datetime
 
+---
 
-# Python Scripts
-`setup_db.py:`
-1. Loads CSV
-2. Creates and populates all 3–5 tables
+## Python Scripts
 
-`query_db.py:`
-Sample matching logic (e.g., find users with 2+ shared subjects & overlapping availability)
+- `setup_db.py`: Initializes the SQLite schema (tables, relationships)
+- `insert_data.py`: Loads mock CSV data, handles UTC conversion, and populates the database
+- `query_db.py`: (Planned) Implements basic matching logic between students
 
-# Matching Logic
-**Goal:** Simulate Pairing 
+---
+
+## Matching Logic
+
+**Goal:** Simulate Pairing
 
 **Criteria:**
+
 - Shared subjects
 - Overlapping availability
 - (Optional) Similar study style or compatible personality type
 
 **Approach:**
+
 - Read from SQLite into pandas
 - Join/merge tables
 - Group & filter based on overlap rules
 - Output: List of ideal matches per student
 
+---
 
-# Folder Structure 
+## Folder Structure
+
+```plaintext
 virtual-study-buddy-app/
-│
-├── data/                         
-│   └── virtual_study_buddy_mock_data.csv
-│
-├── db/                           
-│   └── study_buddy.db
-│
-├── notebooks/                   
-│   └── test_setup_db.ipynb
-│
+├── data/
+│   ├── raw/
+│   │   └── students.csv               # Mockaroo-generated raw dataset
+│   └── processed/
+│       └── study_buddy.db             # Final SQLite database
 ├── scripts/
-│   ├── setup_db.py
-│   └── query_db.py ??
-│
-└── README.md 
+│   ├── insert_data.py                 # Populates the database from CSV
+│   ├── setup_db.py                    # Initializes the database schema
+│   ├── utils/
+│   │   ├── time_utils.py              # Handles time conversion and UTC logic
+│   │   └── db_utils.py                # Database helper functions
+├── notebooks/
+│   └── analysis.ipynb                 # Optional: for exploratory queries
+└── README.md                          # Project overview and instructions
+```
 
 # User App Flow 
 
-# Contributors 
-**Our Team consists of only Data Science Fellows:**
+---
+
+## Contributors
+
+**Data Science Fellows**
 - Adewale Thompson
 - Akisha Robinson
 - Gennadii Ershov
@@ -123,10 +141,13 @@ virtual-study-buddy-app/
 - Zakiyyah Jones
 - Julissa Morales
 
-**Bloomberg Mentors:**
+**Bloomberg Mentors**
 - Karishma Borole
 - Yogesh Bhatti
 
-# License
-This project was developed solely for educational and demonstration purposes during a hackathon. We do not claim ownership of the data used; it was generated via Mockaroo(https://mockaroo.com) and used strictly to simulate a study buddy matching system.  
+---
+
+## License
+
+This project was developed solely for educational and demonstration purposes during a hackathon. We do not claim ownership of the data used; it was generated via [Mockaroo](https://mockaroo.com) and used strictly to simulate a study buddy matching system.  
 No real user information is stored, collected, or shared.
