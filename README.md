@@ -9,56 +9,60 @@ The raw data was generated via Mockaroo and saved as virtual_study_buddy_mock_da
 This database supports the core functionality of the Virtual Study Buddy App. It organizes student profiles, subjects of interest, and weekly availability to enable effective matching based on study preferences and schedules. The tables for messaging and notifications allow for organizing the data structure for real-time communication and personalized nudges. The structure is built to keep things organized and support additional features as the app grows.
 
 ## General Overview
-Table Name    | Description
--------------------------------------------------------------------------|
-Students      | Stores individual student profiles                       |
-Subjects      | Tracks each student to the subjects they are studying    |
-Availability  | Tracks each student’s weekly availability                |
-Messages      | Stores chat messages exchanged between students          |
-Notifications | Stores alerts like daily check-ins or chat reminders     |
+| Table Name    | Description                                                |
+|---------------|------------------------------------------------------------|
+| Students      | Stores individual student profiles                         |
+| Subjects      | Tracks each student to the subjects they are studying      |
+| Availability  | Tracks each student’s weekly availability                  |
+| Messages      | Stores chat messages exchanged between students            |
+| Notifications | Stores alerts like daily check-ins or chat reminders       |
+
 
 ### Students
-Column           | Type | Description
--------------------------------------------------------------------------|
-student_id       | TEXT | Primary key, uniquely identifies a student     |
-student_name     | TEXT | Full name of the student                       |
-personality_type | TEXT | MBTI type                                      |
-study_style      | TEXT | Pair/Group/Flexible (Group Formation)          |
-timezone         | TEXT | Student’s time zone (EST, PST)                 |
-experience_level | TEXT | Beginner, Intermediate, Advanced               |
-GPA              | TEXT | Grade Point Average (can be decimal)           |
+| Column           | Type  | Description                                  |
+|------------------|-------|----------------------------------------------|
+| student_id       | TEXT  | Primary key, uniquely identifies a student   |
+| student_name     | TEXT  | Full name of the student                     |
+| personality_type | TEXT  | MBTI type                                    |
+| study_style      | TEXT  | Pair/Group/Flexible (Group Formation)        |
+| timezone         | TEXT  | Student’s time zone (EST, PST)               |
+| experience_level | TEXT  | Beginner, Intermediate, Advanced             |
+| GPA              | REAL  | Grade Point Average (can be decimal)         |
+
 
 ### Subjects 
-Column            | Type | Description
--------------------------------------------------------------------------|
-student_id        | TEXT | Foreign key referencing students table        |
-preferred_subject | TEXT | Subject associated with the student           |
+| Column            | Type | Description                                  |
+|-------------------|------|----------------------------------------------|
+| student_id        | TEXT | Foreign key referencing students table       |
+| preferred_subject | TEXT | Subject associated with the student          |
 
 
 ### Availability
-Column          | Type | Description
--------------------------------------------------------------------------|
-student_id      | TEXT | Foreign key referencing students table          |
-days_of_week    | TEXT | Week Day student is available                   |
+| Column        | Type | Description                                  |
+|---------------|------|----------------------------------------------|
+| student_id    | TEXT | Foreign key referencing students table       |
+| days_of_week  | TEXT | Week day the student is available            |
+
 
 ### Chat
-Column           | Type     | Description
--------------------------------------------------------------------------|
-message_id       | INTERGER | Primary key                                |
-sender_id        | TEXT     | Foreign key referencing students table     |
-receiver_id      | TEXT     | Foreign key referencing students table     |
-content          | TEXT     | Message content                            |
-timezstamp       | DATETIME | When the message was sent                  |
+| Column      | Type     | Description                                  |
+|-------------|----------|----------------------------------------------|
+| message_id  | INTEGER  | Primary key                                  |
+| sender_id   | TEXT     | Foreign key referencing students table       |
+| receiver_id | TEXT     | Foreign key referencing students table       |
+| content     | TEXT     | Message content                              |
+| timestamp   | DATETIME | When the message was sent                    |
+
 
 ### Notifications
-Column           | Type     | Description
--------------------------------------------------------------------------|
-notification_id  | INTERGER | Primary key                                |
-student_id       | TEXT     | Foreign key referencing students table     |
-type             | TEXT     | daily_checkin, chat_reminder               |
-content          | TEXT     | Message or reminder content                |
-status           | TEXT     | sent, read, or dismissed                   |
-timezstamp       | DATETIME | When the notification was created          |
+| Column           | Type     | Description                                  |
+|------------------|----------|----------------------------------------------|
+| notification_id  | INTEGER  | Primary key                                  |
+| student_id       | TEXT     | Foreign key referencing students table       |
+| type             | TEXT     | e.g., daily_checkin, chat_reminder           |
+| content          | TEXT     | Message or reminder content                  |
+| status           | TEXT     | sent, read, or dismissed                     |
+| timestamp        | DATETIME | When the notification was created            |
 
 
 # Tools/ Libraries 
