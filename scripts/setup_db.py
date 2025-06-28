@@ -1,122 +1,117 @@
 """
-Python script to create the Virtual Study Buddy database from a mock CSV file.
+Python script to initialize the SQLite database for the Virtual Study Buddy App.
 
-This script sets up the SQLite database for the Virtual Study Buddy App.
-It creates the necessary tables:
-- students: stores student profile information
-- subjects: maps students to their preferred subjects
-- availability: tracks each student’s weekly availability
-- messages: stores chat messages between students
-- notifications: stores reminders or nudges for app activity
+This script sets up the core database schema, including the following tables:
+- students: stores student profile info including timezone-adjusted study availability
+- subjects: list of supported study subjects
+- student_subjects: maps students to their preferred subjects (many-to-many)
+- study_days: stores students’ preferred study days (local time)
+- utc_study_days: stores preferred study days converted to UTC for global matching
 
-It also loads initial mock data from the CSV file and inserts it into the appropriate tables.
+Optional tables like messages and notifications are defined in the code but commented out
+until needed.
 
-Note: This script should be run once to initialize the database. If changes are made to the schema, 
-you may need to delete the existing database and rerun this script.
+Note: This script only sets up the database schema. Data import from the CSV file and any
+matching or messaging logic should be handled in separate scripts.
 
+Run this script once to initialize the database structure. Re-run only if schema changes are made.
 """
 
-# Import Libraries
 import sqlite3
-import pandas as pd
-import os 
+import os
 
-# Load CSV Files
-df = pd.read_csv("data/Virtual Study Buddy_ Mock Data Set - virtual_study_buddy_mock_data.csv")
+def initialize_database():
+    base_dir = os.path.dirname(__file__)
+    db_path = os.path.join(base_dir, '..', 'data', 'processed', 'study_buddy.db')
 
-# Connect to the database
-conn = sqlite3.connect("db/study_buddy.db")
-cursor = conn.cursor()
+    conn = sqlite3.connect(db_path)
+    cursor = conn.cursor()
 
-# Create a table for Student Profiles
-cursor.execute("""
-CREATE TABLE IF NOT EXISTS students (
-    student_id TEXT PRIMARY KEY,
-    student_name TEXT NOT NULL, -- NOT NULL ensure that there are no empty values
-    study_times TEXT NOT NULL,
-    personality_type TEXT,
-    study_style TEXT NOT NULL,
-    timezone TEXT NOT NULL,
-    experience_level TEXT NOT NULL,
-    GPA REAL                    -- REAL allows for decimal values
-)
-""")
+    # Students table
+    cursor.execute("""
+    CREATE TABLE IF NOT EXISTS students (
+        student_id TEXT PRIMARY KEY,
+        student_name TEXT NOT NULL, 
+        personality_type TEXT,
+        study_style TEXT NOT NULL,
+        utc_offset INTEGER NOT NULL,
+        experience_level TEXT NOT NULL,
+        GPA REAL,
+        utc_start_time TEXT NOT NULL,   
+        utc_end_time TEXT NOT NULL     
+    );
+    """)
 
-# Create a table for Subjects
-cursor.execute('''
-CREATE TABLE IF NOT EXISTS subjects (
-    student_id TEXT,
-    subject TEXT,
-    FOREIGN KEY(student_id) REFERENCES students(student_id)
-)
-''')
+    # Subjects table
+    cursor.execute("""
+    CREATE TABLE IF NOT EXISTS subjects (
+        subject_id INTEGER PRIMARY KEY AUTOINCREMENT,
+        subject_name TEXT NOT NULL UNIQUE
+    );
+    """)
 
-# Availability table
-cursor.execute('''
-CREATE TABLE IF NOT EXISTS availability (
-    student_id TEXT,
-    day_of_week TEXT,
-    FOREIGN KEY(student_id) REFERENCES students(student_id)
-)
-''')
+    # Student-Subjects table
+    cursor.execute("""
+    CREATE TABLE IF NOT EXISTS student_subjects (
+        student_id TEXT,
+        subject_id INTEGER,
+        PRIMARY KEY (student_id, subject_id),
+        FOREIGN KEY (student_id) REFERENCES students(student_id),
+        FOREIGN KEY (subject_id) REFERENCES subjects(subject_id)
+    );
+    """)
 
-# Messages table 
-cursor.execute('''
-CREATE TABLE IF NOT EXISTS messages (
-    message_id INTEGER PRIMARY KEY AUTOINCREMENT,
-    sender_id TEXT,
-    receiver_id TEXT,
-    content TEXT,
-    timestamp TEXT,
-    FOREIGN KEY(sender_id) REFERENCES students(student_id),
-    FOREIGN KEY(receiver_id) REFERENCES students(student_id)
-)
-''')
+    # Study days table
+    cursor.execute("""
+    CREATE TABLE IF NOT EXISTS study_days (
+        student_id TEXT,
+        day TEXT CHECK (day IN ('Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun')),
+        PRIMARY KEY (student_id, day),
+        FOREIGN KEY (student_id) REFERENCES students(student_id)
+    );
+    """)
 
-# Notifications table (optional feature)
-cursor.execute('''
-CREATE TABLE IF NOT EXISTS notifications (
-    notification_id INTEGER PRIMARY KEY AUTOINCREMENT,
-    student_id TEXT,
-    type TEXT,
-    content TEXT,
-    status TEXT,
-    timestamp TEXT,
-    FOREIGN KEY(student_id) REFERENCES students(student_id)
-)
-''')
+    # UTC study days table
+    cursor.execute("""
+    CREATE TABLE IF NOT EXISTS utc_study_days (
+        student_id TEXT,
+        utc_day TEXT CHECK (utc_day IN ('Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun')),
+        PRIMARY KEY (student_id, utc_day),
+        FOREIGN KEY (student_id) REFERENCES students(student_id)
+    );
+    """)
 
-# Insert Data into Students Table
-for i, row in df.iterrows():
-    cursor.execute('''
-    INSERT OR REPLACE INTO students VALUES (?, ?, ?, ?, ?, ?, ?, ?)
-    ''', (
-        row['student_id'],
-        row['student_name'],
-        row['study_times'],
-        row['personality_type'],
-        row['study_style'],
-        row['timezone'],
-        row['experience_level'],
-        row['GPA']
-    ))
+    # NOTE: Messaging and notification features are defined below but
+    #       disabled for the MVP. Uncomment them when ready to use.
+    # # Messages table 
+    # cursor.execute('''
+    # CREATE TABLE IF NOT EXISTS messages (
+    #     message_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    #     sender_id TEXT,
+    #     receiver_id TEXT,
+    #     content TEXT,
+    #     timestamp TEXT,
+    #     FOREIGN KEY(sender_id) REFERENCES students(student_id),
+    #     FOREIGN KEY(receiver_id) REFERENCES students(student_id)
+    # )
+    # ''')
 
-# Insert data into Subjects Table 
-for i, row in df.iterrows():
-    subjects = [s.strip() for s in row['preferred_subjects'].split(',')]
-    for subject in subjects:
-        cursor.execute('''
-            INSERT INTO subjects (student_id, subject) VALUES (?, ?)
-        ''', (row['student_id'], subject))
+    # # Notifications table (optional feature)
+    # cursor.execute('''
+    # CREATE TABLE IF NOT EXISTS notifications (
+    #     notification_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    #     student_id TEXT,
+    #     type TEXT,
+    #     content TEXT,
+    #     status TEXT,
+    #     timestamp TEXT,
+    #     FOREIGN KEY(student_id) REFERENCES students(student_id)
+    # )
+    # ''')
+    
+    conn.commit()
+    conn.close()
 
-# Insert data into Availability Table
-for i, row in df.iterrows():
-    days = [d.strip() for d in row['days_of_wk_avail'].split(',')]
-    for day in days:
-        cursor.execute('''
-            INSERT INTO availability (student_id, day_of_week) VALUES (?, ?)
-        ''', (row['student_id'], day))
-
-# Save and close the connection
-conn.commit()
-conn.close()
+# Run this when needed
+if __name__ == "__main__":
+    initialize_database()
