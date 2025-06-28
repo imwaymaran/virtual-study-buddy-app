@@ -47,7 +47,7 @@ This database supports the core functionality of the Virtual Study Buddy App. It
 ### Chat
 | Column      | Type     | Description                                  |
 |-------------|----------|----------------------------------------------|
-| message_id  | INTEGER  | Primary key                                  |
+| message_id  | TEXT     | Primary key                                  |
 | sender_id   | TEXT     | Foreign key referencing students table       |
 | receiver_id | TEXT     | Foreign key referencing students table       |
 | content     | TEXT     | Message content                              |
@@ -57,7 +57,7 @@ This database supports the core functionality of the Virtual Study Buddy App. It
 ### Notifications
 | Column           | Type     | Description                                  |
 |------------------|----------|----------------------------------------------|
-| notification_id  | INTEGER  | Primary key                                  |
+| notification_id  | TEXT     | Primary key                                  |
 | student_id       | TEXT     | Foreign key referencing students table       |
 | type             | TEXT     | e.g., daily_checkin, chat_reminder           |
 | content          | TEXT     | Message or reminder content                  |
