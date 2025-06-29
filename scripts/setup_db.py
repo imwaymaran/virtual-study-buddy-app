@@ -81,6 +81,38 @@ def initialize_database():
     );
     """)
 
+    # Scheduled study sessions
+    cursor.execute("""
+    CREATE TABLE IF NOT EXISTS scheduled_sessions (
+        session_id INTEGER PRIMARY KEY AUTOINCREMENT,
+        host_student_id TEXT NOT NULL,
+        guest_student_id TEXT,
+        day TEXT NOT NULL,
+        start_time TEXT NOT NULL,
+        end_time TEXT NOT NULL,
+        status TEXT DEFAULT 'pending',
+        created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+        FOREIGN KEY (host_student_id) REFERENCES students(student_id),
+        FOREIGN KEY (guest_student_id) REFERENCES students(student_id)
+    );
+    """)
+
+# Notifications table (optional feature)
+    cursor.execute('''
+    CREATE TABLE IF NOT EXISTS notifications (
+         notification_id INTEGER PRIMARY KEY AUTOINCREMENT,
+         student_id TEXT,
+         type TEXT,
+         content TEXT,
+         status TEXT,
+         timestamp TEXT,
+         FOREIGN KEY(student_id) REFERENCES students(student_id)
+     )
+     ''')
+    
+    conn.commit()
+    conn.close()
+
     # NOTE: Messaging and notification features are defined below but
     #       disabled for the MVP. Uncomment them when ready to use.
     # # Messages table 
@@ -95,22 +127,6 @@ def initialize_database():
     #     FOREIGN KEY(receiver_id) REFERENCES students(student_id)
     # )
     # ''')
-
-    # # Notifications table (optional feature)
-    # cursor.execute('''
-    # CREATE TABLE IF NOT EXISTS notifications (
-    #     notification_id INTEGER PRIMARY KEY AUTOINCREMENT,
-    #     student_id TEXT,
-    #     type TEXT,
-    #     content TEXT,
-    #     status TEXT,
-    #     timestamp TEXT,
-    #     FOREIGN KEY(student_id) REFERENCES students(student_id)
-    # )
-    # ''')
-    
-    conn.commit()
-    conn.close()
 
 # Run this when needed
 if __name__ == "__main__":
