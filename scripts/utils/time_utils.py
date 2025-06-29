@@ -24,6 +24,14 @@ def shift_to_utc(local_time_str, utc_offset):
     utc_time = local_time - timedelta(hours=utc_offset)
     return utc_time.strftime("%H:%M")
 
+def shift_to_local(utc_time_str, utc_offset):
+    """
+    Convert UTC time (HH:MM) to local using the offset.
+    """
+    dt = datetime.strptime(utc_time_str, "%H:%M")
+    local_dt = dt + timedelta(hours=utc_offset)
+    return local_dt.strftime("%H:%M")
+
 def get_utc_day(local_day_str, local_time_str, utc_offset):
     """
     Get the UTC weekday for a local day and time.

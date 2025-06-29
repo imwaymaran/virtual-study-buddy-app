@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Registration Form</title>
+</head>
+<body>
+    <h2>Register for Study Buddy</h2>
+
+    <form action="/form" method="post">  
+
+        <!-- Basic Information -->
+        <fieldset>
+            <legend>Basic Information</legend>
+
+            <div>
+                <label for="first_name">First Name: <span style="color: red">*</span></label><br>
+                <input type="text" id="first_name" name="first_name" required>
+            </div><br>
+
+            <div>
+                <label for="middle_name">Middle Name (optional):</label><br>
+                <input type="text" id="middle_name" name="middle_name">
+            </div><br>
+
+            <div>
+                <label for="last_name">Last Name: <span style="color: red">*</span></label><br>
+                <input type="text" id="last_name" name="last_name" required>
+            </div>
+        </fieldset>
+
+        <!-- Academic & Study Preferences -->
+        <fieldset>
+            <legend>Academic & Study Preferences</legend>
+
+            <div>
+                <label for="GPA">GPA:</label><br>
+                <input type="number" step="0.01" min="0.0" max="5.0" name="GPA" id="GPA" required>
+            </div><br>
+
+            <div>
+                <label for="experience_level">Experience Level: <span style="color: red">*</span></label><br>
+                <select name="experience_level" id="experience_level" required>
+                    <option value="">-- Select Experience Level --</option>
+                    <option>Beginner</option>
+                    <option>Intermediate</option>
+                    <option>Advanced</option>
+                </select>
+            </div><br>
+
+            <div>
+                <label for="study_style">Study Style: <span style="color: red">*</span></label><br>
+                <select name="study_style" id="study_style" required>
+                    <option value="">-- Select Study Style --</option>
+                    <option>Pair</option>
+                    <option>Flexible</option>
+                    <option>Group</option>
+                </select>
+            </div><br>
+
+            <div>
+                <label for="personality_type">Personality Type:</label><br>
+                <select id="personality_type" name="personality_type">
+                    <option value="">-- Select Personality Type --</option>
+                    <option value="INTJ">INTJ</option>
+                    <option value="INTP">INTP</option>
+                    <option value="ENTJ">ENTJ</option>
+                    <option value="ENTP">ENTP</option>
+                    <option value="INFJ">INFJ</option>
+                    <option value="INFP">INFP</option>
+                    <option value="ENFJ">ENFJ</option>
+                    <option value="ENFP">ENFP</option>
+                    <option value="ISTJ">ISTJ</option>
+                    <option value="ISFJ">ISFJ</option>
+                    <option value="ESTJ">ESTJ</option>
+                    <option value="ESFJ">ESFJ</option>
+                    <option value="ISTP">ISTP</option>
+                    <option value="ISFP">ISFP</option>
+                    <option value="ESTP">ESTP</option>
+                    <option value="ESFP">ESFP</option>
+                </select>
+            </div>
+        </fieldset>
+
+        <!-- Preferred Subjects -->
+        <fieldset>
+            <legend>Preferred Subjects <span style="color: red">*</span></legend>
+
+            <p>Select one or more subjects:</p>
+            {% for subject in subjects %}
+                <div>
+                    <label><input type="checkbox" name="preferred_subjects[]" value="{{ subject }}"> {{ subject }}</label>
+                </div>
+            {% endfor %}
+
+            <br>
+            <div>
+                <label for="other_subject">Other (please specify):</label><br>
+                <input type="text" id="other_subject" name="other_subject" placeholder="Type your subject here">
+            </div>
+        </fieldset>
+
+        <!-- Availability & Scheduling -->
+        <fieldset>
+            <legend>Availability & Scheduling</legend>
+
+            <div>
+                <label for="study_times">Preferred Study Time: <span style="color: red">*</span></label><br>
+                <select name="study_times" id="study_times" required>
+                    <option value="">-- Select Time Slot --</option>
+                    <option value="Mornings">Mornings (08:00–12:00)</option>
+                    <option value="Afternoons">Afternoons (13:00–17:00)</option>
+                    <option value="Evenings">Evenings (18:00–22:00)</option>
+                    <option value="Late Nights">Late Nights (22:00–02:00)</option>
+                </select>
+            </div><br>
+
+            <div>
+                <label for="timezone">Your Time Zone: <span style="color: red">*</span></label><br>
+                <select id="timezone" name="timezone" required>
+                    <option value="">-- Select Time Zone --</option>
+                    {% for offset in range(-12, 15) %}
+                        <option value="UTC{{ '+' if offset >= 0 else '' }}{{ offset }}">
+                            UTC{{ '+' if offset >= 0 else '' }}{{ offset }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </div><br>
+
+            <div>
+                <label>Days of Week Available: <span style="color: red">*</span></label><br>
+                <input type="checkbox" name="days_of_wk_avail[]" value="Mon"> Mon
+                <input type="checkbox" name="days_of_wk_avail[]" value="Tue"> Tue
+                <input type="checkbox" name="days_of_wk_avail[]" value="Wed"> Wed
+                <input type="checkbox" name="days_of_wk_avail[]" value="Thu"> Thu
+                <input type="checkbox" name="days_of_wk_avail[]" value="Fri"> Fri
+                <input type="checkbox" name="days_of_wk_avail[]" value="Sat"> Sat
+                <input type="checkbox" name="days_of_wk_avail[]" value="Sun"> Sun
+            </div>
+        </fieldset>
+
+        <br>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
