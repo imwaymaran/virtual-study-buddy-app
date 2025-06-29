@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Account</title>
+</head>
+<body>
+    <h1>Welcome, {{ student[0] }}!</h1>
+
+    <section>
+        <h2>Profile Summary</h2>
+        <ul>
+            <li><strong>Personality Type:</strong> {{ student[1] or 'Not Provided' }}</li>
+            <li><strong>Study Style:</strong> {{ student[2] }}</li>
+            <li><strong>Experience Level:</strong> {{ student[4] }}</li>
+            <li><strong>GPA:</strong> {{ student[5] if student[5] is not none else 'Not Provided' }}</li>
+            <li><strong>Time Zone (UTC Offset):</strong> UTC{{ '+' if student[3]|int >= 0 else '' }}{{ student[3] }}</li>
+            <li><strong>Preferred Study Time (Local):</strong> {{ local_start }} – {{ local_end }}</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Available Study Days</h2>
+        <ul>
+            {% for day in study_days %}
+                <li>{{ day }}</li>
+            {% endfor %}
+        </ul>
+    </section>
+
+    <section>
+        <h2>Subjects</h2>
+        <ul>
+            {% for subject in subjects %}
+                <li>{{ subject }}</li>
+            {% endfor %}
+        </ul>
+    </section>
+
+</body>
+</html>
