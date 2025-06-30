@@ -81,6 +81,7 @@ def initialize_database():
     );
     """)
 
+<<<<<<< HEAD
     # Scheduled study sessions
     cursor.execute("""
     CREATE TABLE IF NOT EXISTS scheduled_sessions (
@@ -112,6 +113,17 @@ def initialize_database():
     
     conn.commit()
     conn.close()
+=======
+    #student login in information
+    cursor.execute("""
+    CREATE TABLE IF NOT EXISTS Student_login (
+        student_id TEXT PRIMARY KEY,
+        username TEXT 
+        password TEXT 
+    ):             
+                   
+    """)
+>>>>>>> 5c05927 (Fixing merge conflict)
 
     # NOTE: Messaging and notification features are defined below but
     #       disabled for the MVP. Uncomment them when ready to use.

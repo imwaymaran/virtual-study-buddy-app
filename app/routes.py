@@ -35,6 +35,9 @@ def register():
         study_style = request.form.get("study_style")
         personality_type = request.form.get("personality_type") or None
 
+        #This adds tutor or tutee to the database
+        "study_buddy_type" = request.form.get("study_buddy_type")
+
         timezone = request.form.get("timezone")
         utc_offset = int(timezone.replace("UTC", ""))
 
