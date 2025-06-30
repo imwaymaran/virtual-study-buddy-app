@@ -1,24 +1,29 @@
-<!-- templates/match_results.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Match Results</title>
+  <meta charset="UTF-8" />
+  <title>Match Results</title>
 </head>
-<body>
-    <h2>Match Results</h2>
+<body style="font-family: Arial, sans-serif; background-color: #f8f9fa;">
+
+  <h1 style="text-align: center;">Virtual Study Buddy</h1>
+  <h2 style="text-align: center;">Match Results</h2>
+
+  <div style="max-width: 400px; margin: 0 auto; background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); text-align: center;">
     {% if matches %}
-        <ul>
-            {% for match in matches %}
-                <li>{{ match['name'] }} - Match Score: {{ match['score'] }}%</li>
-            {% endfor %}
-        </ul>
+      <ul style="list-style: none; padding: 0;">
+        {% for match in matches %}
+          <li style="margin: 10px 0; font-weight: bold;">
+            {{ match['name'] }} - Match Score: {{ match['score'] }}%
+          </li>
+        {% endfor %}
+      </ul>
     {% else %}
-        <p>No matches found.</p>
+      <p>No matches found.</p>
     {% endif %}
+
+    <a href="/account/{{ student_id }}" style="display: inline-block; margin-top: 20px; padding: 10px 15px; background-color: #007bff; color: white; text-decoration: none; border-radius: 5px;">Back to Profile</a>
+  </div>
+
 </body>
 </html>
-<!-- 
-    This HTML template displays the results of the matching process.
-    It lists the matched students along with their match scores.
-    If no matches are found, it displays a message indicating that.
