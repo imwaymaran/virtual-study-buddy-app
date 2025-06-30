@@ -4,9 +4,11 @@ import os
 import sqlite3
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'scripts')))
 
 from scripts.utils.db_utils import get_or_create_subject, get_next_student_id
 from scripts.utils.time_utils import STUDY_TIME_RANGES, shift_to_utc, shift_to_local, get_utc_day
+from scripts.matching_logic import default_match, custom_match
 
 from config import DB_PATH
 
@@ -135,3 +137,28 @@ def account(student_id):
         local_start=local_start,
         local_end=local_end
     )
+
+@main.route('/match/<student_id>', methods=['GET', 'POST'])
+def match(student_id):
+    if request.method == 'GET':
+        return render_template('match_form.html', student_id=student_id)
+
+    # Load student profiles dynamically from database or static source
+    student_profiles = load_student_profiles()  # This must return a dict keyed by student_id
+
+    match_mode = request.form.get('mode')
+
+    if match_mode == 'default':
+        matches = default_match(student_id, student_profiles)
+    else:
+        preferences = {
+            'subjects': 'subjects' in request.form,
+            'days': 'days' in request.form,
+            'time': 'time' in request.form,
+            'style': 'style' in request.form,
+            'GPA': 'GPA' in request.form,
+            'personality': 'personality' in request.form,
+        }
+        matches = custom_match(student_id, preferences, student_profiles)
+
+    return render_template('match_results.html', student_id=student_id, matches=matches)

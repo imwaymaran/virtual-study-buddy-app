@@ -96,8 +96,8 @@ def initialize_database():
         FOREIGN KEY (guest_student_id) REFERENCES students(student_id)
     );
     """)
-
-# Notifications table (optional feature)
+    
+    # Notifications table (optional feature)
     cursor.execute('''
     CREATE TABLE IF NOT EXISTS notifications (
          notification_id INTEGER PRIMARY KEY AUTOINCREMENT,

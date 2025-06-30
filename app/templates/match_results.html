@@ -1,0 +1,24 @@
+<!-- templates/match_results.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Match Results</title>
+</head>
+<body>
+    <h2>Match Results</h2>
+    {% if matches %}
+        <ul>
+            {% for match in matches %}
+                <li>{{ match['name'] }} - Match Score: {{ match['score'] }}%</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No matches found.</p>
+    {% endif %}
+</body>
+</html>
+<!-- 
+    This HTML template displays the results of the matching process.
+    It lists the matched students along with their match scores.
+    If no matches are found, it displays a message indicating that.

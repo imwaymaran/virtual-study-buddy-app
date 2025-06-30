@@ -1,9 +1,10 @@
-<!-- html_scripts/match_form.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Choose Match Mode</title>
+    <title>Find a Study Match</title>
+
+    <!-- Basic styling for layout and design -->
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -11,13 +12,13 @@
             background-color: #f8f9fa;
         }
         h1 {
-        h1 {
             color: #333;
         }
+        form {
             background: #fff;
             padding: 20px;
             border-radius: 8px;
-            width: 350px;
+            width: 400px;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         }
         label {
@@ -26,7 +27,7 @@
         }
         .checkbox-section {
             margin-left: 15px;
-            display: none;
+            display: none; /* Hidden until 'Custom Match' is selected */
         }
         input[type="submit"] {
             margin-top: 20px;
@@ -42,6 +43,8 @@
             background-color: #0056b3;
         }
     </style>
+
+    <!-- Script to toggle visibility of custom match options -->
     <script>
         function toggleCheckboxes() {
             const customOption = document.getElementById("custom");
@@ -52,19 +55,38 @@
 </head>
 <body>
     <h1>Find a Study Match</h1>
-    <form action="/match" method="POST">
-        <label><input type="radio" name="mode" value="default" checked onclick="toggleCheckboxes()"> Default Match</label>
-        <label><input type="radio" name="mode" value="custom" id="custom" onclick="toggleCheckboxes()"> Custom Match</label>
 
+    <!-- Match form: sends POST request to /match -->
+    <form action="/match" method="POST">
+        <!-- TODO: Replace this hidden user ID with dynamic login info -->
+        <input type="hidden" name="user_id" value="stu1001">
+
+        <!-- Match mode selection -->
+        <label>
+            <input type="radio" name="mode" value="default" checked onclick="toggleCheckboxes()"> Default Match
+        </label>
+        <label>
+            <input type="radio" name="mode" value="custom" id="custom" onclick="toggleCheckboxes()"> Custom Match
+        </label>
+
+        <!-- Custom preference options (only visible when custom selected) -->
         <div id="checkbox-options" class="checkbox-section">
             <label><input type="checkbox" name="subjects"> Match by Subjects</label>
             <label><input type="checkbox" name="days"> Match by Days</label>
+            <label><input type="checkbox" name="time"> Match by Time Overlap</label>
             <label><input type="checkbox" name="style"> Match by Study Style</label>
             <label><input type="checkbox" name="GPA"> Match by GPA Goal</label>
             <label><input type="checkbox" name="personality"> Match by Personality Type</label>
         </div>
+        
+        <!-- Hidden field to pass student ID -->
+        <input type="hidden" name="student_id" value="{{ student_id }}">
 
+        <!-- Submit button -->
         <input type="submit" value="Find My Matches">
     </form>
 </body>
 </html>
+<!-- This HTML form allows students to select their matching preferences and submit them to the server for processing. -->
+<!-- The form includes options for both default and custom matching modes, with checkboxes for various criteria
+like subjects, days, time overlap, study style, GPA goals, and personality types. -->
