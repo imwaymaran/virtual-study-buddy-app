@@ -27,7 +27,6 @@ def initialize_database():
     conn = sqlite3.connect(db_path)
     cursor = conn.cursor()
 
-    # Students table
     cursor.execute("""
     CREATE TABLE IF NOT EXISTS students (
         student_id TEXT PRIMARY KEY,
@@ -42,7 +41,6 @@ def initialize_database():
     );
     """)
 
-    # Subjects table
     cursor.execute("""
     CREATE TABLE IF NOT EXISTS subjects (
         subject_id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -50,7 +48,6 @@ def initialize_database():
     );
     """)
 
-    # Student-Subjects table
     cursor.execute("""
     CREATE TABLE IF NOT EXISTS student_subjects (
         student_id TEXT,
@@ -61,7 +58,6 @@ def initialize_database():
     );
     """)
 
-    # Study days table
     cursor.execute("""
     CREATE TABLE IF NOT EXISTS study_days (
         student_id TEXT,
@@ -71,7 +67,6 @@ def initialize_database():
     );
     """)
 
-    # UTC study days table
     cursor.execute("""
     CREATE TABLE IF NOT EXISTS utc_study_days (
         student_id TEXT,
@@ -80,50 +75,16 @@ def initialize_database():
         FOREIGN KEY (student_id) REFERENCES students(student_id)
     );
     """)
-
-<<<<<<< HEAD
-    # Scheduled study sessions
+    
     cursor.execute("""
-    CREATE TABLE IF NOT EXISTS scheduled_sessions (
-        session_id INTEGER PRIMARY KEY AUTOINCREMENT,
-        host_student_id TEXT NOT NULL,
-        guest_student_id TEXT,
-        day TEXT NOT NULL,
-        start_time TEXT NOT NULL,
-        end_time TEXT NOT NULL,
-        status TEXT DEFAULT 'pending',
-        created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-        FOREIGN KEY (host_student_id) REFERENCES students(student_id),
-        FOREIGN KEY (guest_student_id) REFERENCES students(student_id)
+    CREATE TABLE IF NOT EXISTS users (
+        user_id INTEGER PRIMARY KEY AUTOINCREMENT,
+        student_id TEXT,
+        email TEXT UNIQUE NOT NULL,
+        password TEXT NOT NULL,
+        FOREIGN KEY (student_id) REFERENCES students(student_id)
     );
     """)
-    
-    # Notifications table (optional feature)
-    cursor.execute('''
-    CREATE TABLE IF NOT EXISTS notifications (
-         notification_id INTEGER PRIMARY KEY AUTOINCREMENT,
-         student_id TEXT,
-         type TEXT,
-         content TEXT,
-         status TEXT,
-         timestamp TEXT,
-         FOREIGN KEY(student_id) REFERENCES students(student_id)
-     )
-     ''')
-    
-    conn.commit()
-    conn.close()
-=======
-    #student login in information
-    cursor.execute("""
-    CREATE TABLE IF NOT EXISTS Student_login (
-        student_id TEXT PRIMARY KEY,
-        username TEXT 
-        password TEXT 
-    ):             
-                   
-    """)
->>>>>>> 5c05927 (Fixing merge conflict)
 
     # NOTE: Messaging and notification features are defined below but
     #       disabled for the MVP. Uncomment them when ready to use.
@@ -139,7 +100,38 @@ def initialize_database():
     #     FOREIGN KEY(receiver_id) REFERENCES students(student_id)
     # )
     # ''')
+    
+    # Scheduled study sessions
+    # cursor.execute("""
+    # CREATE TABLE IF NOT EXISTS scheduled_sessions (
+    #     session_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    #     host_student_id TEXT NOT NULL,
+    #     guest_student_id TEXT,
+    #     day TEXT NOT NULL,
+    #     start_time TEXT NOT NULL,
+    #     end_time TEXT NOT NULL,
+    #     status TEXT DEFAULT 'pending',
+    #     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    #     FOREIGN KEY (host_student_id) REFERENCES students(student_id),
+    #     FOREIGN KEY (guest_student_id) REFERENCES students(student_id)
+    # );
+    # """)
+    
+    # Notifications table (optional feature)
+    # cursor.execute('''
+    # CREATE TABLE IF NOT EXISTS notifications (
+    #      notification_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    #      student_id TEXT,
+    #      type TEXT,
+    #      content TEXT,
+    #      status TEXT,
+    #      timestamp TEXT,
+    #      FOREIGN KEY(student_id) REFERENCES students(student_id)
+    #  )
+    #  ''')
 
+    conn.commit()
+    conn.close()
 # Run this when needed
 if __name__ == "__main__":
     initialize_database()
