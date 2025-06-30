@@ -1,4 +1,5 @@
 from flask import Blueprint, render_template, request, redirect
+from werkzeug.security import generate_password_hash, check_password_hash
 import sys
 import os
 import sqlite3
@@ -8,17 +9,71 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 's
 
 from scripts.utils.db_utils import get_or_create_subject, get_next_student_id
 from scripts.utils.time_utils import STUDY_TIME_RANGES, shift_to_utc, shift_to_local, get_utc_day
-from scripts.matching_logic import default_match, custom_match
+# from scripts.matching_logic import default_match, custom_match
 
 from config import DB_PATH
 
 main = Blueprint("main", __name__)
+auth = Blueprint('auth', __name__)
 
+@auth.route("/", methods=["GET", "POST"])
+def login():
+    if request.method == "POST":
+        email = request.form.get("email")
+        password = request.form.get("password")
+
+        with sqlite3.connect(DB_PATH) as conn:
+            cursor = conn.cursor()
+            cursor.execute("SELECT user_id, password, student_id FROM users WHERE email = ?", (email,))
+            user = cursor.fetchone()
+
+            if user and check_password_hash(user[1], password):
+                return redirect(f"/account/{user[2]}")
+            else:
+                return render_template("login.html", error="Invalid credentials")
+
+    return render_template("login.html")
+
+@auth.route('/register', methods=['GET', 'POST'])
+def register():
+    if request.method == 'POST':
+        email = request.form.get("email")
+        password = request.form.get("password")
+        confirm = request.form.get("confirm_password")
+
+        if not email or not password or password != confirm:
+            return render_template("register.html", error="Invalid input or passwords do not match")
+
+        hashed_pw = generate_password_hash(password)
+        
+        with sqlite3.connect(DB_PATH) as conn:
+            cursor = conn.cursor()
+
+            cursor.execute("SELECT * FROM users WHERE email = ?", (email,))
+            existing_user = cursor.fetchone()
+            if existing_user:
+                return render_template("register.html", error="Email already registered")
+
+            cursor.execute(
+                "INSERT INTO users (email, password) VALUES (?, ?)",
+                (email, hashed_pw)
+            )
+
+            user_id = cursor.lastrowid  # fetch auto-incremented user_id
+
+        return redirect(f"/form?user_id={user_id}")
+
+    return render_template("register.html")     
+        
+        
+    
 
 @main.route("/form", methods=["GET", "POST"])
-def register():
-    # POST: insert info to db
+def form():
+    # POST: insert info to db    
     if request.method == "POST":
+        user_id_raw = request.form.get("user_id")
+        user_id = int(user_id_raw)
         first_name = request.form.get("first_name")
         middle_name = request.form.get("middle_name") or ""
         last_name = request.form.get("last_name")
@@ -36,7 +91,7 @@ def register():
         personality_type = request.form.get("personality_type") or None
 
         #This adds tutor or tutee to the database
-        "study_buddy_type" = request.form.get("study_buddy_type")
+        # study_buddy_type = request.form.get("study_buddy_type")
 
         timezone = request.form.get("timezone")
         utc_offset = int(timezone.replace("UTC", ""))
@@ -57,6 +112,9 @@ def register():
 
         with sqlite3.connect(DB_PATH) as conn:
             cursor = conn.cursor()
+            cursor.execute("SELECT 1 FROM users WHERE user_id = ?", (user_id,))
+            if not cursor.fetchone():
+                return "User not found", 404
             cursor.execute("""
                 INSERT INTO students (
                     student_id, student_name, personality_type, study_style, utc_offset,
@@ -91,6 +149,11 @@ def register():
                     "INSERT OR IGNORE INTO student_subjects (student_id, subject_id) VALUES (?, ?)",
                     (student_id, subject_id)
                 )
+            
+            cursor.execute(
+                "UPDATE users SET student_id = ? WHERE user_id = ?",
+                (student_id, user_id)
+)
 
         return redirect(f"/account/{student_id}")
 
@@ -138,30 +201,36 @@ def account(student_id):
         study_days=study_days,
         subjects=subjects,
         local_start=local_start,
-        local_end=local_end
+        local_end=local_end,
+        student_id=student_id
     )
-
+    
 @main.route('/match/<student_id>', methods=['GET', 'POST'])
 def match(student_id):
     if request.method == 'GET':
         return render_template('match_form.html', student_id=student_id)
 
-    # Load student profiles dynamically from database or static source
-    student_profiles = load_student_profiles()  # This must return a dict keyed by student_id
+# @main.route('/match/<student_id>', methods=['GET', 'POST'])
+# def match(student_id):
+#     if request.method == 'GET':
+#         return render_template('match_form.html', student_id=student_id)
 
-    match_mode = request.form.get('mode')
+#     # Load student profiles dynamically from database or static source
+#     student_profiles = load_student_profiles()  # This must return a dict keyed by student_id
 
-    if match_mode == 'default':
-        matches = default_match(student_id, student_profiles)
-    else:
-        preferences = {
-            'subjects': 'subjects' in request.form,
-            'days': 'days' in request.form,
-            'time': 'time' in request.form,
-            'style': 'style' in request.form,
-            'GPA': 'GPA' in request.form,
-            'personality': 'personality' in request.form,
-        }
-        matches = custom_match(student_id, preferences, student_profiles)
+#     match_mode = request.form.get('mode')
 
-    return render_template('match_results.html', student_id=student_id, matches=matches)
+#     if match_mode == 'default':
+#         matches = default_match(student_id, student_profiles)
+#     else:
+#         preferences = {
+#             'subjects': 'subjects' in request.form,
+#             'days': 'days' in request.form,
+#             'time': 'time' in request.form,
+#             'style': 'style' in request.form,
+#             'GPA': 'GPA' in request.form,
+#             'personality': 'personality' in request.form,
+#         }
+#         matches = custom_match(student_id, preferences, student_profiles)
+
+#     return render_template('match_results.html', student_id=student_id, matches=matches)
